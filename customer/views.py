@@ -4,7 +4,6 @@ from django.core.mail import send_mail
 from .models import MenuItem, Category, OrderModel
 
 
-
 class Index(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'customer/index.html')

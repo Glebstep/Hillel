@@ -6,6 +6,7 @@
         <div class="col-md-12 col-sm-12 p-4">
             <form method="POST">
                 {% csrf_token %}
+                {% if appetizers is not None %}
                 <div class="pt-5">
                     {% for app in appetizers %}
                     <div class="row">
@@ -27,6 +28,7 @@
                 {% endfor %}
                 </div>
 
+                {% elif entres is not None %}
                 <div class="pt-5">
                     {% for entre in entres %}
                     <div class="row mt-4">
@@ -48,6 +50,7 @@
                     {% endfor %}
                 </div>
 
+                {% elif deserts is not None %}
                 <div class="pt-5">
                     {% for dessert in desserts %}
                     <div class="row mt-4">
@@ -69,6 +72,7 @@
                     {% endfor %}
                 </div>
 
+                {% elif drinks is not None %}
                 <div class="pt-5">
                     {% for drink in drinks %}
                     <div class="row mt-4">
@@ -90,6 +94,7 @@
                     {% endfor %}
                 </div>
 
+                {% endif %}
                 <div class= "form-group pt-3">
                     <label for="name">Full Name</label>
                     <input required class="form-control" type ="text" placeholder = "Your Name" name="name"/>

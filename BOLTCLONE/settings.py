@@ -31,18 +31,34 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth.backends.AuthenticationBackend',
+    
+]
+
 INSTALLED_APPS = [
     
+    
+    # "allauth.account.auth",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
+    
+    'crispy-forms',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     
     'customer',
     'restorant',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -52,6 +68,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
+    
 ]
 
 ROOT_URLCONF = 'BOLTCLONE.urls'
@@ -131,3 +149,14 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # Keep the default backend
+    'allauth.account.auth_backends.AuthenticationBackend',  # Allauth backend
+)
+
+ACCOUNT_ADAPTER = 'restorant.account_adapter.NoNewUserAccountAdapter'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
