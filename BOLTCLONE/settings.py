@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.staticfiles',
     
-    'crispy-forms',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -158,5 +157,3 @@ AUTHENTICATION_BACKENDS = (
 )
 
 ACCOUNT_ADAPTER = 'restorant.account_adapter.NoNewUserAccountAdapter'
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
