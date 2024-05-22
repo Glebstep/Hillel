@@ -1,0 +1,24 @@
+{% extends 'customer/base.html' %}
+
+{% block content %}
+<div class="pt-5">
+    {% for m in menu %}
+    <div class="row mt-4">
+        <div class="col-md-2 col-sm-12">
+            <img class="rounded" src="{{ m.image.url }}" width="150" height="100"/>
+        </div>
+        <div class="col-md-8 col-sm-12">
+            <div class="d-flex flex-row">
+                <div class="form-group form-check">
+                    
+                    <label class="form-check-label">{{ m.name }}</label>
+                </div>
+                <p class="font-weight-bold pl-5">{{ m.price }}</p>
+            </div>
+            <p>{{ m.description }}</p>
+        </div>
+    </div>
+    <hr />
+    {% endfor %}
+</div>
+{% endblock content %}

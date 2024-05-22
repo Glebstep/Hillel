@@ -20,9 +20,11 @@ class Order(View):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.factory = ConcreteFactory()
-
+        
+    #Polymorhism
     def get(self, request, *args, **kwargs):
         # get every item from each category
+        #Reading from 
         appetizers = MenuItem.objects.filter(category__name__contains='Appetizer')
         entres = MenuItem.objects.filter(category__name__contains='Entre')
         desserts = MenuItem.objects.filter(category__name__contains='Dessert')
@@ -42,7 +44,7 @@ class Order(View):
 
         # render the template
         return render(request, 'customer/order.html', context)
-
+    #Abstraction
     def post(self, request, *args, **kwargs):
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -57,6 +59,7 @@ class Order(View):
         items = request.POST.getlist('items[]')
 
         for item in items:
+            
             menu_item = MenuItem.objects.get(pk=int(item))
             item_data = {
                 'id': menu_item.pk,
@@ -68,7 +71,7 @@ class Order(View):
 
         price = sum(item['price'] for item in order_items['items'])
         item_ids = [item['id'] for item in order_items['items']]
-
+        #Writing
         order = self.factory.create_order(
             price=price,
             name=name,
@@ -101,3 +104,20 @@ class Order(View):
         }
 
         return render(request, 'customer/order_confirmation.html', context)
+    
+class GetMenuByCategory(View):
+    def get(self, request, category):
+        try:
+            menu = MenuItem.objects.filter(category__name__contains=category)
+        except MenuItem.DoesNotExist:
+            menu = None
+        return render(request, 'customer/menu.html', {'menu': menu})
+
+
+class GetMenu(View):
+    def get(self, request):
+        try:
+            menu = MenuItem.objects.all()
+        except MenuItem.DoesNotExist:
+            menu = None
+        return render(request, 'customer/menu.html', {'menu': menu})

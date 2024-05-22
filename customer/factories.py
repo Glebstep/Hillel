@@ -1,6 +1,6 @@
 from .models import MenuItem, Category, OrderModel
 from abc import ABC, abstractmethod
-
+#Abstract_method 
 class AbstractFactory(ABC):
     @abstractmethod
     def create_menu_item(self, **kwargs):
