@@ -27,8 +27,9 @@
                     <hr />
                 {% endfor %}
                 </div>
+                {% endif %}
 
-                {% elif entres is not None %}
+                {% if entres is not None %}
                 <div class="pt-5">
                     {% for entre in entres %}
                     <div class="row mt-4">
@@ -49,8 +50,9 @@
                     <hr />
                     {% endfor %}
                 </div>
+                {% endif %}
 
-                {% elif deserts is not None %}
+                {% if deserts is not None %}
                 <div class="pt-5">
                     {% for dessert in desserts %}
                     <div class="row mt-4">
@@ -72,7 +74,9 @@
                     {% endfor %}
                 </div>
 
-                {% elif drinks is not None %}
+                {% endif %}
+
+                {% if drinks is not None %}
                 <div class="pt-5">
                     {% for drink in drinks %}
                     <div class="row mt-4">
@@ -93,6 +97,29 @@
                     <hr />
                     {% endfor %}
                 </div>
+
+                {% if mainmeals is not None %}
+                <div class="pt-5">
+                    {% for mainmeal in mainmeals %}
+                    <div class="row mt-4">
+                        <div class="col-md-2 col-sm-12">
+                            <img class="rounded" src="{{ mainmeal.image.url }}" width="150" height="100"/>
+                        </div>
+                        <div class="col-md-8 col-sm-12">
+                            <div class="d-flex flex-row">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ mainmeal.pk }}">
+                                    <label class="form-check-label">{{ mainmeal.name }}</label>
+                                </div>
+                                <p class="font-weight-bold pl-5">{{ mainmeal.price }}</p>
+                            </div>
+                            <p>{{ mainmeal.description }}</p>
+                        </div>
+                    </div>
+                    <hr />
+                    {% endfor %}
+                </div>
+                {% endif %}
 
                 {% endif %}
                 <div class= "form-group pt-3">

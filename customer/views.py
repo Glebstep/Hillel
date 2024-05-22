@@ -28,6 +28,7 @@ class Order(View):
         desserts = MenuItem.objects.filter(category__name__contains='Dessert')
         drinks = MenuItem.objects.filter(category__name__contains='Drink')
         soups = MenuItem.objects.filter(category__name__contains='Soup')
+        mainmeals = MenuItem.objects.filter(category__name__contains='mainmeal')
 
         # pass into context
         context = {
@@ -36,6 +37,7 @@ class Order(View):
             'desserts': desserts,
             'drinks': drinks,
             'soups': soups,
+            'mainmeals': mainmeals,
         }
 
         # render the template
