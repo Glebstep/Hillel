@@ -1,6 +1,6 @@
 <div align="center">
 
-# Propulse - Propel your business forward. 
+# Food Delivery 
 </div>
 
 ### Cloning the repository
